@@ -16,10 +16,264 @@
     <div class="reveal">
         <div class="slides">
             <section>
-               <img src="./images/grunt-logo.png" />
+               <img src="images/grunt-logo.png" />
             </section>
             <section>
                 <h1>So what is Grunt?</h1>
+            </section>
+            <section>
+                <section id="fragments">
+                    <h1>It is...</h1>
+                    <ul>
+                        <li class="fragment">Task-based command line tool</li>
+                        <li class="fragment">Built on top of Node.js</li>
+                        <li class="fragment">Easy to extend</li>
+                    </ul>
+                </section>
+            </section>
+            <section>
+                <section id="why-use">
+                    <h1>Why use Grunt?</h1>
+                    <ul>
+                        <li class="fragment">Configuration over scripting</li>
+                        <li class="fragment">A large amount of plugins</li>
+                        <li class="fragment">Your development aide</li>
+                    </ul>
+                </section>
+            </section>
+            <section>
+                <section id="what-can-it-do">
+                    <h1>Ok.. so what can it do?</h1>
+                    <ul>
+                        <li class="fragment">Compile SASS</li>
+                        <li class="fragment">Uglify</li>
+                        <li class="fragment">Concatenate</li>
+                        <li class="fragment">Run unit tests</li>
+                        <li class="fragment">Run cucumbers</li>
+                        <li class="fragment">So much more...</li>
+                    </ul>
+                </section>
+            </section>
+            <section>
+                <h1>What does it look like?</h1>
+            </section>
+            <section>
+                <img src="images/grunt-screen.png" />
+            </section>
+            <section>
+                <h1>Awesome. What do I need?</h1>
+            </section>
+            <section>
+                <section id="grunt-setup">
+                    <h1>Basic Setup</h1>
+                    <ol>
+                        <li class="fragment">Grunt (obviously)</li>
+                        <li class="fragment">Gruntfile.js</li>
+                        <li class="fragment">That's it.</li>
+                    </ol>
+                </section>
+            </section>
+            <section>
+                <h1>Grunt is an NPM Module</h1>
+            </section>
+            <section>
+                <h1>How do I get Grunt into my Project?</h1>
+            </section>
+            <section>
+                <h1>package.json</h1>
+                <h2>Nodes way of managing dependencies for projects</h2>
+            </section>
+            <section>
+                <h1>Use NPM to create Package.json</h1>
+                <pre><code data-trim>
+                    $ npm init
+                </code></pre>
+                <h3>Follow the interactive guide</h3>
+            </section>
+            <section data-transition="none">
+                <img src="images/package.json.png" />
+            </section>
+            <section data-transition="none">
+                <img src="images/package.json.grunt.png" />
+            </section>
+            <section>
+                <h1>Please.. I beg.. Don't do that.</h1>
+                <h4>I have for the last 3 months.</h4>
+                <h4>Don't go through my pain.</h4>
+            </section>
+            <section>
+                <h1>Install Grunt</h1>
+                <pre><code data-trim>
+                    $ npm install grunt --save
+                </code></pre>
+                <h3>Use this instead. Much better.</h3>
+            </section>
+            <section>
+                <h1>You should have...</h1>
+                <img src="images/folder-structure-node.png" />
+            </section>
+            <section>
+                <h1>Install Grunt-Cli</h1>
+                <pre><code data-trim>
+                    $ npm install -g grunt-cli
+                </code></pre>
+                <h3>Global install of Grunt command line.</h3>
+                <h3>This is only used to run the grunt in node_modules folder</h3></h4>
+            </section>
+            <section>
+                <h1>Now running Grunt</h1>
+                <img src="images/gruntfile-not-found.png" />
+            </section>
+            <section>
+                <section id="gruntfile">
+                    <h1>What's Gruntfile.js?</h1>
+                    <ul>
+                        <li class="fragment">Place where the magic happens</li>
+                        <li class="fragment">Load in external tasks/plugins</li>
+                        <li class="fragment">Create custom tasks</li>
+                        <li class="fragment">Setup configuration for both</li>
+                    </ul>
+                </section>
+            </section>
+            <section data-transition="none">
+                <h1>What's one look like?</h1>
+                <img src="./images/gruntfile-screenshot.png" />
+            </section>
+            <section data-transition="none">
+                <h1>Grunt Config</h1>
+                <img src="./images/gruntfile-1-screenshot.png" />
+            </section>
+            <section data-transition="none">
+                <h1>Loading NPM Tasks</h1>
+                <img src="./images/gruntfile-2-screenshot.png" />
+            </section>
+            <section data-transition="none">
+                <h1>Defining Tasks</h1>
+                <img src="./images/gruntfile-3-screenshot.png" />
+            </section>
+            <section>
+                <h1>Running grunt tasks</h1>
+                <pre><code data-trim>
+                    grunt taskname
+                </code></pre>
+                <pre><code data-trim>
+                    grunt taskname:target
+                </code></pre>
+                <pre><code data-trim>
+                    grunt taskname:arg1:arg2
+                </code></pre>
+            </section>
+            <section>
+                <h1>Creating Grunt Tasks</h1>
+            </section>
+            <section>
+                <section id="task-types">
+                    <h1>Task types</h1>
+                    <ul>
+                        <li class="fragment">Alias Tasks</li>
+                        <li class="fragment">Basic Tasks</li>
+                        <li class="fragment">Multi-Tasks</li>
+                    </ul>
+                </section>
+            </section>
+            <section>
+                <section id="alias-tasks">
+                    <h1>Alias Tasks</h1>
+                    <ul>
+                        <li class="fragment">Don't contain any logic</li>
+                        <li class="fragment">Reference other tasks and/or targets</li>
+                        <li class="fragment">Used to create groups of tasks</li>
+                    </ul>
+                    <pre class="fragment" id="alias1"><code data-trim>
+                        grunt.registerTask(taskName, [taskList]);
+                    </code></pre>
+                    <pre class="fragment" id="alias2"><code data-trim>
+                        grunt.registerTask('build', ['phpunit', 'phpcs', 'build-assets']);
+                    </code></pre>
+                </section>
+            </section>
+            <section>
+                <section id="basic-tasks">
+                    <h1>Basic Tasks</h1>
+                    <ul>
+                        <li class="fragment">Contain logic</li>
+                        <li class="fragment">Don't inherit targets or config</li>
+                        <li class="fragment">Can accept arguments</li>
+                    </ul>
+                    <pre class="fragment"><code data-trim>
+                        grunt.registerTask(taskName, description, taskFunction)
+                    </code></pre>
+                    <pre class="fragment"><code data-trim>
+                        grunt.registerTask('build', 'do some building!', function() {
+    console.log('ive just been run');
+});
+                    </code></pre>
+                </section>
+            </section>
+            <section>
+                <section id="multi-tasks">
+                    <h1>Multi-Tasks</h1>
+                    <ul>
+                        <li class="fragment">Contain logic</li>
+                        <li class="fragment">Have different targets</li>
+                        <li class="fragment">Have different config</li>
+                    </ul>
+                    <pre class="fragment"><code data-trim>
+                        grunt.registerMultiTask(taskName, [description, ] taskFunction)
+                    </code></pre>
+                </section>
+            </section>
+            <section>
+                <section id="config">
+                    <h1>Config Ahoy</h1>
+                    <pre class="fragment"><code data-trim>
+grunt.initConfig({
+    log: {
+        foo: [1, 2, 3],
+        bar: 'hello world',
+        baz: false
+    }
+});
+
+grunt.registerMultiTask('log', 'Log stuff.', function() {
+    grunt.log.writeln(this.target + ': ' + this.data);
+});
+
+                    </code></pre>
+                </section>
+            </section>
+            <section>
+                <h1>Loading in 3rd party plugins?</h1>
+            </section>
+            <section>
+                <h1>Grunt Plugins are NPM Modules</h1>
+            </section>
+            <section>
+                <h1>Therefore you add them to your package.json</h1>
+            </section>
+            <section>
+                <h1>Adding a plugin to Project.json</h1>
+                <pre><code data-trim>
+                    $ npm install grunt-contrib-uglify --save
+                </code></pre>
+            </section>
+            <section>
+                <h1>Add it to your Gruntfile.js</h1>
+            </section>
+            <section>
+                <h3>Like so...</h3>
+                <pre><code data-trim>
+grunt.loadNpmTasks('grunt-contrib-uglify');
+         </code></pre>
+            </section>
+            <section>
+                <h3>Then to run</h3>
+                <pre><code data-trim>
+                    grunt {taskname}
+                </code></pre>
+            </section>
+            <section>
+                <h1>Demo</h1>
             </section>
         </div>
     </div>
@@ -35,7 +289,6 @@
                     src: 'reveal/plugin/highlight/highlight.js',
                     async: true,
                     callback: function () {
-                        hljs.initHighlightingOnLoad();
                     }
                 }
             ]
